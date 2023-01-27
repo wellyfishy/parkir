@@ -25,7 +25,7 @@ SECRET_KEY="5f3283bd2126311489adc891e41001ff38a309cd3b86bf36"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=True
 
-ALLOWED_HOSTS = ['parkiran.herokuapp.com']
+ALLOWED_HOSTS=['parkiran.herokuapp.com']
 
 
 # Application definition
