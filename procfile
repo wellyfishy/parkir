@@ -1,1 +1,1 @@
-web: gunicorn parkir.wsgi --log-file -
+web: gunicorn parkir.wsgi
