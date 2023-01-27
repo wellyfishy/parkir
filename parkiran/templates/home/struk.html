@@ -1,0 +1,28 @@
+{% load static %}
+
+<html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<style>
+    @page {
+        size:A10
+    }
+</style>
+
+<body>
+
+<div class="container">
+    <img src="media/{{ struk.qr_code }}" alt="" width="70" style="text-align: center;">
+    <p style="text-align: center; margin-left: 2; font-size: 60%">
+        {{ struk.tanggaljam_masuk }}
+    </p>
+    <p style="text-align: center; margin-left: 2; font-size: 60%">
+        {{ struk.plat_nomor }}
+    </p>
+    <h5 style="text-align: center;">SMKN 7 Samarinda</h5>
+    
+</body>
+    
+</div>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'home/tiketbase.html' %}{% load static %}
+{% block content %}
+<div class="container">
+    <div class="">
+        <h1 style="text-align: center; padding-top: 20%;">
+            Silahkan Ambil Tiket Sesuai Dengan Tempatnya
+        </h1>
+        <hr>
+        <hr>
+        <hr>
+        
+        <div class="container">
+            {% for tipe in tipe %}
+            <h1 style="text-align: center;">
+                <a href="{% url 'ambiltiket1' tipe.id_tipe %}"  class="btn btn-primary btn-md my-0 p">{{ tipe }}</a>
+            </h1>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

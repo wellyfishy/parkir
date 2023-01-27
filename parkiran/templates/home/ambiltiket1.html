@@ -1,0 +1,23 @@
+{% extends 'home/tiketbase.html' %}{% load static %}
+{% block content %}
+<div class="container">
+    <div class="">
+        <h1 style="text-align: center; padding-top: 20%; margin-bottom: -10px">
+            Silahkan Ambil Tiket {{ object.nama_tipe }}
+        </h1>
+        <hr>
+        <hr>
+        <hr>
+        
+        <div class="container"> 
+<h1 style="text-align: center;">
+<a href="{{ object.get_tiket_url }}" class="btn btn-primary btn-md my-0 p" >
+    Ambil Tiket
+    <i class="fas fa-shopping-cart ml-1"></i>
+</a>
+</h1>
+<img src="">
+</div>
+</div>
+</div>
+{% endblock %}

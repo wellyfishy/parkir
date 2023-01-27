@@ -1,0 +1,46 @@
+<meta name="csrf-token" content="{{ csrf_token }}">
+<h1>
+    hi
+</h1>
+<script type="text/javascript" src="path/to/quagga.min.js"></script>
+<script>
+    Quagga.init({
+        inputStream: {
+            type : "LiveStream",
+            constraints: {
+                width: 640,
+                height: 480,
+                facingMode: "environment"
+            }
+        },
+        decoder: {
+            readers : ["code_128_reader","ean_reader","ean_8_reader","code_39_reader","code_39_vin_reader","codabar_reader","upc_reader","upc_e_reader","i2of5_reader"]
+        }
+    }, function(err) {
+        if (err) { console.log(err); return }
+        Quagga.start();
+    });
+    Quagga.onProcessed(function(result) {
+        var drawingCtx = Quagga.canvas.ctx.overlay,
+        drawingCanvas = Quagga.canvas.dom.overlay;
+    });
+    Quagga.onDetected(function(result) {
+        var qrCode = result.codeResult.code;
+        // Send an HTTP request to the server with the QR code as the payload
+        fetch('/scan-qr-code/', {
+            method: 'POST',
+            body: JSON.stringify({'qr_code': qrCode}),
+            headers: {
+                'Content-Type': 'application/json'
+                'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').content
+            }
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            // Display the data on the webpage
+            document.getElementById("scanned-data").innerHTML = data.data;
+        });
+    });
+</script>

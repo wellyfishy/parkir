@@ -1,0 +1,415 @@
+{% extends 'home/base.html' %} {% load static %} {% load humanize %}
+
+{% block content %}
+
+<!-- Data Master -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Uang</p>
+                <h4 class="mb-0">Rp. 5000000</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Struk Mobil</p>
+                <h4 class="mb-0">1000</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Struk Motor</p>
+                <h4 class="mb-0">3462</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Jumlah Mobil & Motor Sedang di Parkiran</p>
+                <h4 class="mb-0">24</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+      </div>
+
+<!-- End Data Master -->
+
+      <div class="row mb-4">
+        <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+          <div class="card">
+            <div class="card-header pb-0">
+              <div class="row">
+
+<!-- Form Isi Nomor Plat & Choices -->
+                <form action="" method="POST">
+                {% csrf_token %}
+                    <div class="card-header pb-0 p-3">
+                        <div class="row">
+                          <div class="col-6 d-flex align-items-center">
+                            <h6 class="mb-0">Isi Parkiran</h6>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-md-0 mb-4">
+                                <div class="my-3">
+                                    {{ form.as_p }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="col-6 text-middle btn bg-gradient-dark mb-0" values="Submit">
+                </form>
+
+                
+                
+
+                {% comment %} <form method="POST" action="">
+                    {% csrf_token %}
+                          <div class="card-header pb-0 p-3">
+                            <div class="row">
+                              <div class="col-6 d-flex align-items-center">
+                                <h6 class="mb-0">Isi Parkiran</h6>
+                              </div>
+                              <div class="col-6 text-end">
+                                <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i class="material-icons text-sm">add</i>&nbsp;&nbsp;Tambah Parkiran</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body p-3">
+                            <div class="row">
+                              <div class="col-md-6 mb-md-0 mb-4">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Nomor Plat</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="input-group input-group-outline my-3">
+                                    <select class="form-select" aria-label="Default select example">
+                                    </select>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                </form> {% endcomment %}
+            </div>
+            </div>
+
+<!-- End Isi Form Plat & Choices -->
+
+<!-- Tabel Parkiran -->
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID Karcis</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor Plat</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tipe Kendaraan</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jam Masuk</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jam Keluar</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Durasi</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Harga</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for struk in struk %}
+                    <tr>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-x font-weight-bold">{{ struk.slug }}</span>
+                    </td>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <a href="{% url 'strukpdf' struk.id_struk %}">
+                            <h6 class="mb-0 text-sm">{{ struk.plat_nomor }}</h6>
+                            </a>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">{{ struk.tipekendaraan }}</h6>
+                            </div>
+                        </div>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            <span class="text-xs font-weight-bold">{{ struk.tanggaljam_masuk }}</span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            {% if struk.tanggaljam_keluar == None %}
+                            <a href="{% url 'keluar' struk.id_struk %}">
+                                <span class="badge badge-sm bg-gradient-warning">Klaim Keluar</span>
+                            </a>
+                            {% else %}
+                            <span class="text-xs font-weight-bold">{{ struk.tanggaljam_keluar }}</span>
+                            
+                            {% endif %}
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          {% if struk.tanggaljam_keluar == None %}
+                          <span class="badge badge-sm bg-gradient-danger">Belum Keluar
+                          {% else %}
+                            <span class="text-xs font-weight-bold">{{ struk.date_diff }} Jam</span>
+                          {% endif %}
+                        </td>
+                        <td>
+                            <div class="align-middle text-center text-sm">
+                              {% if struk.total == None %}
+                              <span class="badge badge-sm bg-gradient-danger">Belum Bayar
+                              {% else %}
+                                  <h6 class="mb-0 text-sm">Rp. {{ struk.total }}</h6>
+                                  {% endif %}
+                
+                              
+                            </div>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            {% if struk.status == 1 %}
+                            <a href="{% url 'dibayar' struk.id_struk %}">
+                            <span class="badge badge-sm bg-gradient-secondary">Belum Dibayar</span>
+                            </a>
+                            {% endif %}
+                            {% if struk.status == 2 %}
+                            <span class="badge badge-sm bg-gradient-success">Telah Dibayar</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+<!-- End Tabel Parkiran -->
+
+          </div>
+        </div>
+          
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100">
+            <div class="card-header pb-0">
+              <h4>Search</h4>
+              <form method="POST" action="{% url 'search' %}">
+                {% csrf_token %}
+                <div class="input-group">
+                  <div class="form-outline">
+                    <input type="search" id="form1" class="form-control border" placeholder="  Search di sini" name="searched"/>
+                    <label class="form-label" for="form1"></label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </form>
+              <h6>Kalkulasi Harga Parkir</h6>
+            </div>
+            <div class="card-body p-3">
+              <div class="timeline timeline-one-side">
+                <div class="timeline-block mb-3">
+                  <span class="timeline-step">
+                    <i class="material-icons text-success text-gradient">notifications</i>
+                  </span>
+                  <div class="timeline-content">
+                    <h6 class="text-dark text-sm font-weight-bold mb-0">Mobil</h6>
+                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Harga parkir Rp. 5000 & Rp. 3000 / Jam</p>
+                  </div>
+                </div>
+                <div class="timeline-block mb-3">
+                    <div class="timeline-block mb-3">
+                      <span class="timeline-step">
+                        <i class="material-icons text-info text-gradient">shopping_cart</i>
+                      </span>
+                      <div class="timeline-content">
+                        <h6 class="text-dark text-sm font-weight-bold mb-0">Motor</h6>
+                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Harga parkir Rp. 3000 & Rp. 2000 / Jam</p>
+                      </div>
+                    </div>
+                  <span class="timeline-step">
+                    <i class="material-icons text-danger text-gradient">code</i>
+                  </span>
+                  <div class="timeline-content">
+                    <h6 class="text-dark text-sm font-weight-bold mb-0">Hitungnya</h6>
+                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Harga Masuk + Harga per Jam * Durasi</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <h6 class="mb-0">&nbsp;&nbsp;&nbsp;{{ struk }}</h6>
+      <br>
+      {% if struk.has_previous %}
+        <a class="btn bg-gradient-dark mb-0" href="?page=1">
+                <i class="material-icons text-sm"></i>&nbsp;&nbsp;<<</a>
+        </a>
+        <a class="btn bg-gradient-dark mb-0" href="?page={{ struk.previous_page_number }}">
+            <i class="material-icons text-sm"></i>&nbsp;&nbsp;<</a>
+        </a>
+      {% endif %}
+      {% if struk.has_next %}
+        <a class="btn bg-gradient-dark mb-0" href="?page={{ struk.next_page_number }}">
+            <i class="material-icons text-sm"></i>&nbsp;&nbsp;></a>
+        </a>
+        <a class="btn bg-gradient-dark mb-0" href="?page={{ struk.paginator.num_pages }}">
+            <i class="material-icons text-sm"></i>&nbsp;&nbsp;>></a>
+        </a>
+      {% endif %}
+      <br>
+      <footer class="footer py-4  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                for a better web.
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <i class="material-icons py-2">settings</i>
+    </a>
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Material UI Configurator</h5>
+          <p>See our dashboard options.</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="material-icons">clear</i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="mt-3 d-flex">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-3">
+        <div class="mt-2 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+        <a class="btn bg-gradient-info w-100" href="https://www.creative-tim.com/product/material-dashboard-pro">Free Download</a>
+        <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

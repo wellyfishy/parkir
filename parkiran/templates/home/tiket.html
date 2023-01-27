@@ -1,0 +1,52 @@
+{% extends 'home/base.html' %} {% load static %} {% load humanize %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+  <div class="card h-100">
+    <div class="card-header pb-0">
+      <h4>Pembayaran</h4>
+      <form id="myForm" method="POST" action="{% url 'tiket' %}">
+        {% csrf_token %}
+
+          <div class="form-outline">
+            <input type="text" id="myInput" class="form-control border" placeholder="  Search di sini" name="searched"/>
+            <label class="form-label" for="myInput"></label>
+          </div>
+          <button type="submit" class="btn btn-primary">
+          Cari <i class="fas fa-search"></i>
+          </button>
+
+      </form>
+      {% if struk == None %}
+      {% else %}
+      <h4 class="mb-0">{{ struk.id_struk }} ({{ struk.tipekendaraan }})</h4>
+      <h6 class="mb-0">Tanggal & Jam Masuk: {{ struk.tanggaljam_masuk }}</h6>
+      <h6 class="mb-0">Tanggal & Jam Keluar: {{ tanggaljam_keluar }}</h6>
+      <h6 class="mb-0">Durasi: {{ date_diff|intcomma}} Jam</h6>
+      <h6 class="mb-0">Total Harga: Rp. {{ total_harga }}</h6>
+      {% comment %} <form method="POST" action="{% url 'tiketbayar1' %}">
+        {% csrf_token %}
+        <a href="{% url 'tiketbayar' struk.id_struk %}">  
+          <button class="btn btn-primary" type="submit">Bayar</button>
+        </a>
+      </form> {% endcomment %}
+      <form method="POST" action="{% url 'tiketbayar' struk.id_struk %}">
+        {% csrf_token %}
+        <div class="input-group">
+          <div class="form-outline">
+            <input type="text" id="form1" class="form-control border" placeholder="  Plat Nomor" name="searched" required/>
+            <label class="form-label" for="form1"></label>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            BAYAR
+          </button>
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
